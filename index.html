@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zachary's Resume</title>
+    <script>
+        const tabs = ["about", "ed", "exp", "skills", "awards", "links"];
+        const contents = ["about-content","ed-content", "exp-content", "skills-content", "awards-content", "links-content"];
+
+        function select(index){
+            var content = document.getElementById(contents[index]);
+            var tab = document.getElementById(tabs[index]);
+            //add hide class for all tabs
+            for(let i = 0;i < tabs.length; i++)
+            {
+                let cont = document.getElementById(contents[i]);
+                cont.classList.add("hide");
+
+                let tab = document.getElementById(tabs[i]);
+                tab.classList.remove("active-tab");
+            }
+            //activate proper content
+            content.classList.remove("hide");
+            tab.classList.add("active-tab");
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function gen_fibb_nums() {
+            //write the fib numbers on the background
+            var n1 = 0;
+            var n2 = 1;
+            var element = document.getElementById("fibb-numbers");
+            // element.innerHTML = "My Bonnie lies over the ocean.My Bonnie lies over the sea.My Bonnie lies over the ocean. Oh, bring back my Bonnie to me";
+            //write first two fib numbers to element
+            element.innerText+=n1;
+            element.innerText+=n2;
+            //now generate and write the rest
+            for(let i = 2; i < 500; i++)
+            {
+                let newFib = n1 + n2;
+                n1 = n2;
+                n2 = newFib;
+                element.innerText+= newFib;
+            }
+        }, false);
+    </script>
+    <style>
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+        .topnav {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            height: 35px;
+            margin: 3px
+        }
+        .container {
+            background-color:lightskyblue;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+        .tab {
+            display: flex;
+            align-items: center;
+            padding-right: 8px;
+            padding-left: 8px;
+            font-size: large;
+            border-right: 1px solid snow;
+        }
+        .tab:hover {
+            background-color:rgb(195, 111, 252);
+        }
+        .hide {
+            display: none;
+        }
+        .active-tab {
+            background-color:rgb(124, 1, 206);
+        }
+        .active-tab:hover {
+            background-color: rgb(124, 1, 206) ;
+        }
+        .panel {
+            background-color: rgb(0, 0, 140,0.35);
+            border-radius: 12%;
+            width: 70%;
+            height: 50%;
+            margin-left: 7%;
+            padding: 40px;
+            margin-top: 2%;
+        }
+        .content-header {
+            text-align: center;
+        }
+        .indent {
+            text-indent: 30px;
+        }
+        #background-numbers {
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            color:hsla(201, 32%, 91%, 0.6);
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zachary Johnson</h1>
+            <p>Email: Zachjohnson543@gmail.com<br>
+                Phone: (480)343-8086
+            </p>
+        </div>
+        <div class="topnav">
+            <div id="about" class="tab active-tab" onclick="select(0)">About me </div>
+            <div id="ed" class="tab" onclick="select(1)">Education</div>
+            <div id="exp" class="tab" onclick="select(2)">Experience</div>
+            <div id="skills" class="tab" onclick="select(3)">Skills</div>
+            <div id="awards" class="tab" onclick="select(4)">Awards and Honors</div>
+            <div id="links" class="tab" onclick="select(5)" style="margin-left: auto; border-left: 1px solid snow;">Links</div>
+        </div>
+            <div id="about-content" style="height: 100%">
+                <div style="display: flex; flex-direction: row; justify-content: left; height: 100%">
+                    <div class="panel" style="width: 50%;">
+                        <h1 class="content-header">About me</h1> 
+                        <p style="font-size: 16pt;" class="indent">
+                            Hello, my name is Zachary Johnson. I graduated from Arizona State University with a Bachelors in pure Mathematics in 2021. I am passionate about many areas of Math, but my favorite branches of Math are Number Theory and Cryptology. I am constantly reading Math books to learn more and would like to write my own someday.
+                        </p>
+                        <p style="font-size: 16pt;" class="indent">
+                            During my undergraduate at Arizona State University, I was forced to take my first programming class as a major requirement. I immediately fell in love with coding, and took more programming classes for fun. I am looking for a career that will allow me to marry my passion for both Math and programming.
+                        </p>
+                        <p style="font-size: 16pt;" class="indent">
+                            Aside from academics, my main hobby is Chess. I frequently compete by entering tournaments. The most exciting tournament I entered was the US National Open in Las Vegas. One of my personal goals is to attain the International Master title within 5 years. Another hobby of mine is solving problems from Project Euler. Project Euler is essentially a compilation of Math problems which are intended to be solved computationally.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="https://zacharys-resume.w3spaces.com/Me.jpg" alt="Zachary Johnson" style="width: 500px; height: 600px; margin: 50px;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="ed-content" class="hide panel">
+                <h1 class="content-header">Education</h1>
+                <p style="font-size: 16pt;">
+                    <b>School: </b>Arizona State University<br><br>
+                    <b>Graduation Date: </b>May 2021<br><br>
+                    <b>Degree: </b>BSc in Mathematics, with a minor in Japanese and certificate in Cryptology<br><br>
+                    <b>GPA: </b>4.0<br><br>
+                    <b>Relevant Classes: </b>
+                </p>
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly; font-size: 16pt;">
+                    <ul>
+                        <li>Calculus 1/2/3</li>
+                        <li>Elementary Statistics</li>
+                        <li>Java Object Oriented Programming 1/2</li>
+                        <li>Mathematical Structures</li> 
+                    </ul>
+                    <ul>
+                        <li>Advanced Calculus</li>
+                        <li>Linear Algebra</li>
+                        <li>Real Analysis</li>
+                        <li>Group Theory</li>
+                    </ul>
+                    <ul>
+                        <li>Number Theory</li>
+                        <li>Cryptography 1/2</li>
+                        <li>Theory of Combinatorics</li>
+                        <li>Ring Theory</li> 
+                    </ul>
+                </div>
+            </div>
+            <div id="exp-content" class="hide panel" style="font-size: 16pt; height: 70%">
+                <h1 class="content-header">Experience</h1>
+                <p><b>2019-2021 </b>Subject Area Tutor, Arizona State University</p>
+                <ul>
+                    <li>Tutor students in Mathematics and other relevant subjects</li>
+                    <li>Collaborated with coworkers to better tutor students</li>
+                    <li>Created 100+ scripts for videos to better assist students</li>
+                </ul>
+                <br>
+                <p><b>2017-2019 </b>Assistant Manager, Domino's</p>
+                <ul>
+                    <li>Made pizza</li>
+                    <li>Handled customer concerns </li>
+                    <li>Cleaned store regularly </li>
+                    <li>Ensured smooth store operations</li>
+                    <li>Responsible for money deposits, as well as checking inventory numbers</li>
+                    <li>Trained coworkers</li>
+                </ul>
+                <br>
+                <p><b>2016-2017 </b>Customer Service Representative, Domino's</p>
+                <ul>
+                    <li>Made pizza</li>
+                    <li>Handled customer concerns </li>
+                    <li>Cleaned store regularly </li>
+                </ul>
+            </div>
+            <div id="skills-content" class="hide panel" style="font-size: 16pt; width: 30%">
+                <h1 class="content-header">Skills</h1>
+                <ul>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C++</li>
+                    <li>Linux</li>
+                    <li>Git</li>
+                    <li>SQL</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript</li>
+                    <li>LateX</li>
+                </ul>
+            </div>
+            <div id="awards-content" class="hide panel" style="font-size: 16pt;">
+                <h1 class="content-header">Awards and Honors</h1>
+                <ul>
+                    <li>Moeur Award (Valedictorian) (Arizona State University 2021)</li>
+                    <li>Summa Cum Laude (Arizona State University 2021)</li>
+                    <li>Dean's list (8) (Arizona State University 2017-2021)</li>
+                    <li>Golden Scholars award in high school (4) (Mesquite High School 2014-2017)</li>
+                    <li>Varsity letter in Arizona Chess (Mesquite High School 2017)</li>
+                    <li>Captain of Chess team (Mesquite High School 2016-2017)</li>
+                    <li>President of Chess club (Mesquite High School 2017)</li>
+                </ul>
+            </div>
+            <div id="links-content" class="hide panel" style="height: 30%">
+                <h1>Links</h1>
+                <p><b>Resume: </b><a href="https://zacharys-resume.w3spaces.com/Resume.pdf" download="Zachary_Johnson_Resume">Zachary_Johnson_Resume</a></p>
+                <p><b>Unofficial Transcript: </b><a href="https://zacharys-resume.w3spaces.com/Unofficial_Transcript.pdf" download="Zachary_Johnson_Unofficial_Transcript">Zachary_Johnson_Unofficial_Transcript</a></p>
+                <p><b>Github: </b><a href="https://github.com/YeetSama543">https://github.com/YeetSama543</a></p>
+                <p><b>LinkedIn: </b><a href="www.linkedin.com/in/zachary-johnson-70ab03205">www.linkedin.com/in/zachary-johnson-70ab03205</a></p>
+
+            </div>
+    </div>
+</body>
+</html>
